@@ -8,7 +8,8 @@
 	border-collapse: collapse;
 	width: 100%;
 	padding-top: 15px;
-	padding-bottom: 15px;
+  padding-bottom: 15px;
+  margin: 0;
 
 }
 
@@ -107,5 +108,7 @@
   .payment-method-table .footable-img img {
     
     max-width: calc(100% - 25px);
+    display: inline-block;
+    vertical-align: middle;
   }
 }
