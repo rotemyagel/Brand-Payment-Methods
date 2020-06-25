@@ -59,14 +59,32 @@ foreach($payment_posts as $payment_post){
 }
 
 
+function deletePostMeta(){
+
+global $payment_ids;
+
+$posts_meta = $payment_ids;
+
+foreach($posts_meta as $post_meta){
+    $vals = get_post_meta($post_meta);
+
+            foreach($vals as $key=>$val)  {
+                    delete_post_meta($post_meta, $key);
+            }
+}
+
+}
+
+
 /**
  * Deactivation hook.
  */
-function payment_methods_deactivate() {
+function payment_methods_uninstall() {
     // Unregister the post type, so the rules are no longer in memory.
     unregister_post_type( 'payment-methods' );
     // Clear the permalinks to remove our post type's rules from the database.
     flush_rewrite_rules();
+    deletePostMeta();
     deletePost();
 }
-register_uninstall_hook( __FILE__, 'payment_methods_deactivate' );
+register_uninstall_hook( __FILE__, 'payment_methods_uninstall' );
