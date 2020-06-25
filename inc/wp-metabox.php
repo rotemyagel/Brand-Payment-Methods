@@ -33,91 +33,70 @@ function brand_payment_add_fields(){
      
 ?>
 
-<div class="field is-horizontal">
 
-	<div class="field-body">
-        <div class="field">
-        <label class="label">Min Deposit</label>
-        <div class="control">
-        <input class="input" type="number" min="0" name="_min_deposit_text_field"
-            value="<?php echo $min_deposit_textfield; ?>" placeholder="Min Deposit" />
-        </div>    
+<form class="w-full max-w-lg">
+  <div class="flex flex-wrap -mx-3">
+    <div class="w-full md:w-1/4 sm:w-1/2 px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+      Min Deposit
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="number" min="0" name="_min_deposit_text_field"
+            value="<?php echo $min_deposit_textfield; ?>" placeholder="Min Deposit">
+      
+    </div>
+    <div class="w-full md:w-1/4 sm:w-1/2 px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+      Max Deposit
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="number" min="0" name="_max_deposit_text_field"
+			value="<?php echo $max_deposit_textfield; ?>" placeholder="Max Deposit">
+    </div>
+    <div class="w-full md:w-1/4 sm:w-1/2 px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+      Deposit Fee
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="number" min="0" name="_deposit_fee_text_field"
+			value="<?php echo $deposit_fee_textfield; ?>" placeholder="Deposit Fee">
+    </div>
+    <div class="w-full md:w-1/4 sm:w-1/2 px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+      Deposit Processing Time
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" name="_deposit_processing_time_text_field"
+			value="<?php echo $deposit_processing_time_textfield; ?>" placeholder="Deposit Processing Time">
+    </div>
+    <div class="w-full md:w-1/4 sm:w-1/2 px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+      Min Withdrawal
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="number" min="0" name="_min_withdrawal_text_field"
+			value="<?php echo $min_withdrawal_textfield; ?>" placeholder="Min Withdrawal">
+    </div>
+    <div class="w-full md:w-1/4 sm:w-1/2 px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+      Max Withdrawal
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="number" min="0" name="_max_withdrawal_text_field"
+			value="<?php echo $max_withdrawal_textfield; ?>" placeholder="Max Withdrawal">
+    </div>
+    <div class="w-full md:w-1/4 sm:w-1/2 px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+      Withdrawal Fee
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="number" min="0" name="_withdrawal_fee_text_field"
+			value="<?php echo $withdrawal_fee_textfield; ?>" placeholder="Withdrawal Fee">
+    </div>
+    <div class="w-full md:w-1/4 sm:w-1/2 px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+      Withdrawal Processing Time
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" name="_withdrawal_processing_time_text_field"
+			value="<?php echo $withdrawal_processing_time_textfield; ?>" placeholder="Withdrawal Processing Time">
+    </div>
 
-		</div>
-		<div class="field">
-        <label class="label">Max Deposit</label>
-        <div class="control">
-        <input class="input" type="number" min="0" name="_max_deposit_text_field"
-			value="<?php echo $max_deposit_textfield; ?>" placeholder="Max Deposit" />
-        </div>
-
-        </div>
-        
-        <div class="field">
-        <label class="label">Deposit Fee</label>
-        <div class="control">
-        <input class="input" type="number" min="0" name="_deposit_fee_text_field"
-			value="<?php echo $deposit_fee_textfield; ?>" placeholder="Deposit Fee" />
-        </div>
-        </div>
-        
-        <div class="field">
-        <label class="label">Deposit Processing Time</label>
-        <div class="control">
-        <input class="input" type="text" name="_deposit_processing_time_text_field"
-			value="<?php echo $deposit_processing_time_textfield; ?>" placeholder="Deposit Processing Time" />
-        </div>
-        </div>
-        
-
-	</div>
-</div>
-
-
-
-<div class="field is-horizontal">
-
-	<div class="field-body">
-        <div class="field">
-        <label class="label">Min Withdrawal</label>
-        <div class="control">
-        <input class="input" type="number" min="0" name="_min_withdrawal_text_field"
-			value="<?php echo $min_withdrawal_textfield; ?>" placeholder="Min Withdrawal" />
-        </div>    
-
-		</div>
-		<div class="field">
-        <label class="label">Max Withdrawal</label>
-        <div class="control">
-        <input class="input" type="number" min="0" name="_max_withdrawal_text_field"
-			value="<?php echo $max_withdrawal_textfield; ?>" placeholder="Max Withdrawal" />
-        </div>
-
-        </div>
-        
-        <div class="field">
-        <label class="label">Withdrawal Fee</label>
-        <div class="control">
-        <input class="input" type="number" min="0" name="_withdrawal_fee_text_field"
-			value="<?php echo $withdrawal_fee_textfield; ?>" placeholder="Withdrawal Fee" />
-        </div>
-        </div>
-        
-        <div class="field">
-        <label class="label">Withdrawal Processing Time</label>
-        <div class="control">
-        <input class="input" type="text" name="_withdrawal_processing_time_text_field"
-			value="<?php echo $withdrawal_processing_time_textfield; ?>" placeholder="Withdrawal Processing Time" />
-        </div>
-        </div>
-        
-
-	</div>
-</div>
-
-
-
-
+    
+  </div>
+</form>
 
 
 <?php    

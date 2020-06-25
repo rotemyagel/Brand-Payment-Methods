@@ -52,7 +52,7 @@ function custom_scripts() {
     
         if ( $hook == 'post.php' ) {
             if ( 'payment-methods' === $post->post_type ) {     
-                // wp_enqueue_style( 'bulma-style' , 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.min.css' );
+                wp_enqueue_style( 'tailwind-style' , 'https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css' );
             }
         }
     }
