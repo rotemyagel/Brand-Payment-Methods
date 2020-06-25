@@ -4,7 +4,7 @@ $args = array(
     'post_type' => 'payment-methods',
     'post_status' => 'publish',
     'posts_per_page' => -1, 
-    'orderby' => 'title', 
+    'orderby' => 'menu_order', 
     'fields' => 'ids',
     'order' => 'ASC'
 );
@@ -37,18 +37,26 @@ wp_reset_postdata();
     </thead>
     <tbody>
         <?php foreach ($posts_id as $post_id) :
-           $thumbnail = get_the_post_thumbnail($post_id); 
+           $thumbnail = get_the_post_thumbnail($post_id);
+           $min_deposit_post_meta = get_post_meta( $post_id, '_min_deposit_text_field', true); 
+           $max_deposit_post_meta = get_post_meta( $post_id, '_max_deposit_text_field', true); 
+           $deposit_fee_post_meta = get_post_meta( $post_id, '_deposit_fee_text_field', true); 
+           $deposit_processing_time_post_meta = get_post_meta( $post_id, '_deposit_processing_time_text_field', true); 
+           $min_withdrawal_post_meta = get_post_meta( $post_id, '_min_withdrawal_text_field', true); 
+           $max_withdrawal_post_meta = get_post_meta( $post_id, '_max_withdrawal_text_field', true); 
+           $withdrawal_fee_post_meta = get_post_meta( $post_id, '_withdrawal_fee_text_field', true); 
+           $withdrawal_processing_time_post_meta = get_post_meta( $post_id, '_withdrawal_processing_time_text_field', true); 
     ?>
         <tr>
-            <td class="footable-img"><?php echo $thumbnail; ?></td>
-            <td><?php echo get_post_meta( $post_id, '_min_deposit_text_field', true); ?></td>
-            <td><?php echo get_post_meta( $post_id, '_max_deposit_text_field', true); ?></td>
-            <td><?php echo get_post_meta( $post_id, '_deposit_fee_text_field', true).' %'; ?></td>
-            <td><?php echo get_post_meta( $post_id, '_deposit_processing_time_text_field', true); ?></td>
-            <td><?php echo get_post_meta( $post_id, '_min_withdrawal_text_field', true); ?></td>
-            <td><?php echo get_post_meta( $post_id, '_max_withdrawal_text_field', true); ?></td>
-            <td><?php echo get_post_meta( $post_id, '_withdrawal_fee_text_field', true).' %'; ?></td>
-            <td><?php echo get_post_meta( $post_id, '_withdrawal_processing_time_text_field', true); ?></td>
+            <td class="footable-img"><?php echo $thumbnail ?: __('N/A', $text_domain); ?></td>
+            <td><?php echo $min_deposit_post_meta ?: __('N/A', $text_domain); ?></td>
+            <td><?php echo $max_deposit_post_meta ?:  __('N/A', $text_domain); ?></td>
+            <td><?php echo $deposit_fee_post_meta.'%' ?:  __('N/A', $text_domain); ?></td>
+            <td><?php echo $deposit_processing_time_post_meta ?: '<div class="time">'.__('INSTANT', $text_domain).'</div>'; ?></td>
+            <td><?php echo $min_withdrawal_post_meta ?:  __('N/A', $text_domain); ?></td>
+            <td><?php echo $max_withdrawal_post_meta ?:  __('N/A', $text_domain); ?></td>
+            <td><?php echo $withdrawal_fee_post_meta.'%' ?:  __('N/A', $text_domain); ?></td>
+            <td><?php echo $withdrawal_processing_time_post_meta ?: '<div class="time">'.__('INSTANT', $text_domain).'</div>'; ?></td>
         </tr>
         <?php endforeach; ?>
 

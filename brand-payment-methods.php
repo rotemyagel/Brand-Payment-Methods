@@ -16,8 +16,6 @@
 
 // To Protect plugin file from accessing directly
 defined('ABSPATH') || die('You are not allowed to access this');
-
-
 define( 'PLUGIN_ROOT_DIR', plugin_dir_path( __FILE__ ) );
 
 $text_domain = 'brand-payment-methods';
@@ -26,7 +24,6 @@ include( PLUGIN_ROOT_DIR . '/post-types/payment-methods.php');
 include( PLUGIN_ROOT_DIR . '/inc/wp-metabox.php');
 include( PLUGIN_ROOT_DIR . '/inc/wp-tinymce.php');
 include( PLUGIN_ROOT_DIR . '/inc/wp-enqueue.php');
-
 
 
 
@@ -39,10 +36,39 @@ add_shortcode( 'payment_methods', 'payment_methods_func' );
 
 
 
+// exit if uninstall constant is not defined
+if (!defined('WP_UNINSTALL_PLUGIN')) exit;
 
 
+$payment_ids = get_posts( 
+    array(
+        'post_type'=>'payment-methods',
+        'posts_per_page'=> -1,
+        'fields' => 'ids',
+        ) 
+);
 
 
+function deletePost() {
 
+global $payment_ids;
 
+$payment_posts = $payment_ids;
 
+foreach($payment_posts as $payment_post){
+    wp_delete_post( $payment_post, true);
+} 
+
+}
+
+/**
+ * Deactivation hook.
+ */
+function payment_methods_deactivate() {
+    // Unregister the post type, so the rules are no longer in memory.
+    unregister_post_type( 'payment-methods' );
+    // Clear the permalinks to remove our post type's rules from the database.
+    flush_rewrite_rules();
+    deletePost();
+}
+register_uninstall_hook( __FILE__, 'payment_methods_deactivate' );

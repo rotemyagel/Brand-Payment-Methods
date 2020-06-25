@@ -79,7 +79,7 @@
 
 .payment-method-table .footable-img img {
 	height: 25px;
-	width: auto;
+  width: auto;
 }
 
 .payment-method-table .footable-detail-row>td {
@@ -95,4 +95,17 @@
 
 .payment-method-table .footable-details.payment-method-table tr td {
   background: transparent;
+}
+
+.payment-method-table .time {
+  color: #4caf50;
+}
+
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 991px) {
+  .payment-method-table .footable-img img {
+    
+    max-width: calc(100% - 25px);
+  }
 }
