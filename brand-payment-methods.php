@@ -36,9 +36,6 @@ add_shortcode( 'payment_methods', 'payment_methods_func' );
 
 
 
-// exit if uninstall constant is not defined
-if (!defined('WP_UNINSTALL_PLUGIN')) exit;
-
 
 $payment_ids = get_posts( 
     array(
@@ -60,6 +57,7 @@ foreach($payment_posts as $payment_post){
 } 
 
 }
+
 
 /**
  * Deactivation hook.
