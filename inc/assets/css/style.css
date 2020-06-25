@@ -18,14 +18,14 @@
 .payment-method-table td {
 	border: none;
 	border-bottom: 1px solid #e4ebeb;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: normal;
-	word-break: break-all;
+	word-break: inherit;
 }
 
 .payment-method-table th,
 .payment-method-table td {
-	padding: 10px 12px;
+	padding: 10px 8px;
 	text-align: left;
 }
 
@@ -46,7 +46,6 @@
 }
 
 .payment-method-table.bt tbody td {
-	font-size: 14px;
 
 	padding: 0;
 }
@@ -91,12 +90,11 @@
 .payment-method-table thead {
   vertical-align: top;
   white-space: normal;
+  word-break: break-word;
 }
 
 
-.payment-method-table .footable-details.payment-method-table tr td {
-  background: transparent;
-}
+
 
 .payment-method-table .time {
   color: #4caf50;
@@ -111,4 +109,14 @@
     display: inline-block;
     vertical-align: middle;
   }
+
+  .payment-method-table tr td {
+    background: #ffffff;
+  }
+
+  .payment-method-table th {
+    line-height: 1.5;
+}
+
+  
 }
