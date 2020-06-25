@@ -46,15 +46,13 @@ function custom_scripts() {
 
     
 
-    function add_admin_scripts( $hook ) {
+    function add_admin_scripts( ) {
 
         global $post;
     
-        if ( $hook == 'post.php' ) {
             if ( 'payment-methods' === $post->post_type ) {     
                 wp_enqueue_style( 'tailwind-style' , 'https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css' );
             }
-        }
     }
     add_action( 'admin_enqueue_scripts', 'add_admin_scripts', 10, 1 );
 
