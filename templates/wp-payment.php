@@ -1,5 +1,8 @@
 <?php
 
+global $text_domain;
+
+
 $args = array(  
     'post_type' => 'payment-methods',
     'post_status' => 'publish',
@@ -24,15 +27,15 @@ wp_reset_postdata();
 <table class="payment-method-table" style="margin-top: 15px;">
     <thead>
         <tr>
-            <th><?php echo __('Payment Method', $text_domain); ?></th>
-            <th><?php echo __('Min Deposit', $text_domain); ?></th>
-            <th><?php echo __('Max Deposit', $text_domain); ?></th>
-            <th><?php echo __('Deposit Fee', $text_domain).' %*'; ?></th>
-            <th data-breakpoints="xs sm"><?php echo __('Deposit Processing Time', $text_domain); ?></th>
-            <th data-breakpoints="xs sm"><?php echo __('Min Withdrawal', $text_domain); ?></th>
-            <th data-breakpoints="xs sm"><?php echo __('Max Withdrawal', $text_domain); ?></th>
-            <th data-breakpoints="xs sm"><?php echo __('Withdrawal Fee', $text_domain).' %*'; ?></th>
-            <th data-breakpoints="xs sm"><?php echo __('Withdrawal Processing Time', $text_domain); ?></th>
+            <th><?php  _e('Payment Method', $text_domain); ?></th>
+            <th><?php  _e('Min Deposit', $text_domain); ?></th>
+            <th><?php  _e('Max Deposit', $text_domain); ?></th>
+            <th><?php  _e('Deposit Fee', $text_domain).' %*'; ?></th>
+            <th data-breakpoints="xs sm"><?php  _e('Deposit Processing Time', $text_domain); ?></th>
+            <th data-breakpoints="xs sm"><?php  _e('Min Withdrawal', $text_domain); ?></th>
+            <th data-breakpoints="xs sm"><?php  _e('Max Withdrawal', $text_domain); ?></th>
+            <th data-breakpoints="xs sm"><?php  _e('Withdrawal Fee', $text_domain).' %*'; ?></th>
+            <th data-breakpoints="xs sm"><?php  _e('Withdrawal Processing Time', $text_domain); ?></th>
         </tr>
     </thead>
     <tbody>
@@ -51,11 +54,11 @@ wp_reset_postdata();
             <td class="footable-img"><?php echo $thumbnail ?: __('N/A', $text_domain); ?></td>
             <td><?php echo $min_deposit_post_meta ?: __('N/A', $text_domain); ?></td>
             <td><?php echo $max_deposit_post_meta ?:  __('N/A', $text_domain); ?></td>
-            <td><?php echo $deposit_fee_post_meta.'%' ?:  __('N/A', $text_domain); ?></td>
+            <td><?php echo $deposit_fee_post_meta ? $deposit_fee_post_meta.'%' :  __('N/A', $text_domain); ?></td>
             <td><?php echo $deposit_processing_time_post_meta ?: '<div class="time">'.__('INSTANT', $text_domain).'</div>'; ?></td>
             <td><?php echo $min_withdrawal_post_meta ?:  __('N/A', $text_domain); ?></td>
             <td><?php echo $max_withdrawal_post_meta ?:  __('N/A', $text_domain); ?></td>
-            <td><?php echo $withdrawal_fee_post_meta.'%' ?:  __('N/A', $text_domain); ?></td>
+            <td><?php echo $withdrawal_fee_post_meta ? $withdrawal_fee_post_meta.'%' :  __('N/A', $text_domain); ?></td>
             <td><?php echo $withdrawal_processing_time_post_meta ?: '<div class="time">'.__('INSTANT', $text_domain).'</div>'; ?></td>
         </tr>
         <?php endforeach; ?>

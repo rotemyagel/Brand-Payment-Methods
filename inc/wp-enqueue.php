@@ -5,11 +5,11 @@ function custom_scripts() {
 
 
     $wp_admin = is_admin();
-    $wp_customizer = is_customize_preview();
+    
 
     // jQuery
-    if ( $wp_admin || $wp_customizer ) {
-        // echo 'We are in the WP Admin or in the WP Customizer';
+    if ( $wp_admin ) {
+        // echo 'We are in the WP Admin';
         return;
     }
     else {
