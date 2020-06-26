@@ -52,12 +52,12 @@ wp_reset_postdata();
             <td class="footable-img"><?php echo $thumbnail ?: __('N/A', 'brand-payment-methods'); ?></td>
             <td><?php echo $min_deposit_post_meta ?: __('N/A', 'brand-payment-methods'); ?></td>
             <td><?php echo $max_deposit_post_meta ?:  __('N/A', 'brand-payment-methods'); ?></td>
-            <td><?php echo $deposit_fee_post_meta ? $deposit_fee_post_meta.'%' :  __('N/A', 'brand-payment-methods'); ?></td>
-            <td><?php echo $deposit_processing_time_post_meta ?: '<div class="time">'.__('INSTANT', 'brand-payment-methods').'</div>'; ?></td>
+            <td><?php echo ($deposit_fee_post_meta ?:'0').'%'  ; ?></td>
+            <td><?php echo $deposit_processing_time_post_meta ? $deposit_processing_time_post_meta . ngettext(__(' DAY', 'brand-payment-methods'), __(' DAYS', 'brand-payment-methods' ), $deposit_processing_time_post_meta) : '<div class="time">'.__('INSTANT', 'brand-payment-methods').'</div>'; ?></td>
             <td><?php echo $min_withdrawal_post_meta ?:  __('N/A', 'brand-payment-methods'); ?></td>
             <td><?php echo $max_withdrawal_post_meta ?:  __('N/A', 'brand-payment-methods'); ?></td>
-            <td><?php echo $withdrawal_fee_post_meta ? $withdrawal_fee_post_meta.'%' :  __('N/A', 'brand-payment-methods'); ?></td>
-            <td><?php echo $withdrawal_processing_time_post_meta ?: '<div class="time">'.__('INSTANT', 'brand-payment-methods').'</div>'; ?></td>
+            <td><?php echo ($withdrawal_fee_post_meta ?: '0').'%' ; ?></td>
+            <td><?php echo $withdrawal_processing_time_post_meta ? $withdrawal_processing_time_post_meta . ngettext(__(' DAY', 'brand-payment-methods'), __(' DAYS', 'brand-payment-methods' ), $withdrawal_processing_time_post_meta) : '<div class="time">'.__('INSTANT', 'brand-payment-methods').'</div>'; ?></td>
         </tr>
         <?php endforeach; ?>
 
