@@ -12,13 +12,11 @@
  * @package         Brand_Payment_Methods
  */
 
-// Your code starts here.
 
 // To Protect plugin file from accessing directly
 defined('ABSPATH') || die('You are not allowed to access this');
 define( 'PLUGIN_ROOT_DIR', plugin_dir_path( __FILE__ ) );
 
-$text_domain = 'brand-payment-methods';
 
 include( PLUGIN_ROOT_DIR . '/post-types/payment-methods.php');
 include( PLUGIN_ROOT_DIR . '/inc/wp-metabox.php');
