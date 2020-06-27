@@ -11,6 +11,12 @@ if (!defined('WP_UNINSTALL_PLUGIN')) exit;
 
 
 
+// delete database table
+global $wpdb;
+$table_name = $wpdb->prefix .'visitor_details';
+$wpdb->query("DROP TABLE IF EXISTS {$table_name}");
+
+
 // delete custom post type posts
 $myplugin_cpt_args = array('post_type' => 'payment-methods', 'posts_per_page' => -1);
 $myplugin_cpt_posts = get_posts($myplugin_cpt_args);
