@@ -27,8 +27,13 @@ foreach ($myplugin_cpt_posts as $post) {
 
 
 // delete post meta
-$myplugin_post_args = array('posts_per_page' => -1);
+$myplugin_post_args = ( array(
+	'fields'         => 'ids', // only return post ID´s
+	'posts_per_page' => '-1',
+	'post_type'      => array('post', 'page'),
+));
 $myplugin_posts = get_posts($myplugin_post_args);
 foreach ($myplugin_posts as $post) {
-	delete_post_meta($post->ID, 'myplugin_post_meta');
+	delete_post_meta($post, 'myplugin_post_meta');
+	delete_post_meta($post, 'post_views_count');
 }

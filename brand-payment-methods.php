@@ -81,9 +81,10 @@ CREATE TABLE `{$wpdb->prefix}visitor_details` (
     `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     `ip` VARCHAR(50) NOT NULL,
     `current_page` VARCHAR(50) NOT NULL,
- `hour` VARCHAR(50) NOT NULL,
- `date` VARCHAR(50) NOT NULL,
- `device` text NOT NULL,
+    `category` VARCHAR(50) NOT NULL,
+    `hour` VARCHAR(50) NOT NULL,
+    `date` VARCHAR(50) NOT NULL,
+    `device` text NOT NULL,
     PRIMARY KEY (`ID`)
    ) ENGINE=InnoDB {$wpdb->get_charset_collate()}";
 
@@ -95,8 +96,9 @@ CREATE TABLE `{$wpdb->prefix}visitor_details` (
 }
 register_activation_hook(__FILE__,'collect_visitor_data');
 
-    global $wpdb;
+global $wpdb;
 
+$current_visitor = json_decode($_COOKIE['current_visitor']);
 $time_zone = get_option('timezone_string');
 date_default_timezone_set($time_zone);
 $time = time();
@@ -111,7 +113,8 @@ $current_id = $_COOKIE['current_id'];
     
     $data = array(
         "ip" => $ipaddress,
-        "current_page" => $current_id,
+        "current_page" => $current_visitor->posts,
+        "category" => $current_visitor->category,
         "hour" => $hour,
         "date" => $date,
         "device" => $useragent,
@@ -120,27 +123,16 @@ $current_id = $_COOKIE['current_id'];
 
      $format = array('%s','%d');
 
-     $current_id = $_COOKIE['current_id'];
-    
+    //  var_dump($current_visitor);
+     $current_id = $current_visitor->posts;
 
      foreach ($shortcode_posts_array as $key => $post) {
          # code...
-         if($post['id'] === $current_id){
+         if($post['id'] === $current_id && !$current_visitor->is_role ){
             $wpdb->insert($table,$data,$format);
             
          }
         
 
      }
-
-     
-
-    
-
-    // SELECT `current_page`, COUNT(*) from `wp_visitor_details` 
-    // GROUP BY `current_page`;
-
-
- 
-
 

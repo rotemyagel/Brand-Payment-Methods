@@ -9,11 +9,12 @@ jQuery(function($) {
 
     }
 
+    
 
 
 
  // Creating a cookie after the document is ready 
-    createCookie("current_id", misha_loadmore_params.posts, "30"); 
+    createCookie("current_visitor", JSON.stringify(payment_params), "30"); 
    
 // Function to create the cookie 
 function createCookie(name, value, days) { 

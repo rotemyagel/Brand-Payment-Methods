@@ -58,7 +58,7 @@ add_action('manage_page_posts_custom_column', 'posts_custom_column_views',5,2);
 
 
 function posts_column_views($defaults){
-    $defaults['post_views'] = __('Views');
+    $defaults['post_views'] = __('Payment Views');
     return $defaults;
 }
 function posts_custom_column_views($column_name, $id){
@@ -68,8 +68,10 @@ function posts_custom_column_views($column_name, $id){
 }
 
 
-foreach ($count_posts_array as $key => $post) {
-    # code...
-    setPostViews($post['id'],$post['total']);
-    
+if($count_posts_array){
+    foreach ($count_posts_array as $key => $post) {
+        # code...
+        setPostViews($post['id'],$post['total']);
+        
+    }
 }
